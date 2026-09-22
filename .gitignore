@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+env/
+*.egg
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Frontend build
+frontend/dist/
+frontend/.vite/
+
+# Uploads (local storage — use object store in production)
+backend/uploads/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# pgAdmin (docker volume data)
+pgadmin_data/
+
+# Alembic (keep versions tracked)
+# alembic/versions/*.py  # commented out — versions should be tracked
+
+# Logs
+*.log
+logs/

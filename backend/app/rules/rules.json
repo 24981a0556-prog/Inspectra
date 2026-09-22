@@ -1,0 +1,56 @@
+{
+  "_comment": "INSPECTRA Rule Library — Legal Metrology (Packaged Commodities) Rules, 2011",
+  "_status": "STUB — Rules are defined here for future implementation. No rule engine reads this file yet.",
+  "_reference": "https://legalmetrology.gov.in/",
+  "version": "0.1.0",
+  "rules": [
+    {
+      "id": "LM_R6_1_A",
+      "name": "Product Name Declaration",
+      "rule_ref": "Rule 6(1)(a)",
+      "description": "Every package shall bear the name of the commodity.",
+      "mandatory": true,
+      "implemented": false
+    },
+    {
+      "id": "LM_R6_1_B",
+      "name": "Net Quantity Declaration",
+      "rule_ref": "Rule 6(1)(b)",
+      "description": "Every package shall declare net quantity in standard units.",
+      "mandatory": true,
+      "implemented": false
+    },
+    {
+      "id": "LM_R6_1_C",
+      "name": "Manufacturer Name & Address",
+      "rule_ref": "Rule 6(1)(c)",
+      "description": "Name and complete address of the manufacturer or packer shall be declared.",
+      "mandatory": true,
+      "implemented": false
+    },
+    {
+      "id": "LM_R6_1_D",
+      "name": "Month and Year of Manufacture",
+      "rule_ref": "Rule 6(1)(d)",
+      "description": "Month and year in which commodity is manufactured or packed shall be declared.",
+      "mandatory": true,
+      "implemented": false
+    },
+    {
+      "id": "LM_R18",
+      "name": "MRP Declaration",
+      "rule_ref": "Rule 18",
+      "description": "Every package shall carry MRP inclusive of all taxes.",
+      "mandatory": true,
+      "implemented": false
+    },
+    {
+      "id": "LM_R6_CONSUMER_CARE",
+      "name": "Consumer Care Information",
+      "rule_ref": "Rule 6(1)(j)",
+      "description": "Consumer care contact details shall be declared.",
+      "mandatory": false,
+      "implemented": false
+    }
+  ]
+}
