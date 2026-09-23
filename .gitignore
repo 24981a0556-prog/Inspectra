@@ -44,6 +44,10 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
+# Cloudflare tunnel binary (large file, not needed in repo)
+cloudflared.exe
+cloudflared
+
 # pgAdmin (docker volume data)
 pgadmin_data/
 
