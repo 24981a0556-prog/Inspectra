@@ -29,7 +29,7 @@ services:
       - key: APP_ENV
         value: production
       - key: CORS_ORIGINS
-        value: "https://inspectra.vercel.app,https://inspectra-frontend.vercel.app,https://inspectra-sih.vercel.app"
+        value: "https://frontend-zeta-seven-sb7rhngb42.vercel.app,https://inspectra.vercel.app,https://inspectra-frontend.vercel.app,https://inspectra-sih.vercel.app"
       - key: PYTHON_VERSION
         value: "3.11.0"
 
