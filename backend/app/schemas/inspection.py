@@ -4,7 +4,7 @@ Inspection Pydantic schemas.
 from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional, List
-from app.models.inspection import InspectionStatus
+from app.models.inspection import InspectionStatus, FinalDecision
 from app.models.inspection_image import ViewType
 from app.schemas.product import ProductOut
 from app.schemas.user import UserOut
@@ -40,6 +40,9 @@ class InspectionOut(BaseModel):
     started_at: Optional[datetime]
     completed_at: Optional[datetime]
     created_at: datetime
+    is_demo: Optional[bool] = False
+    final_decision: Optional[FinalDecision] = None
+    finalized_at: Optional[datetime] = None
 
     model_config = {"from_attributes": True}
 
@@ -52,6 +55,11 @@ class InspectionDetail(BaseModel):
     started_at: Optional[datetime]
     completed_at: Optional[datetime]
     created_at: datetime
+    is_demo: Optional[bool] = False
+    final_decision: Optional[FinalDecision] = None
+    final_decision_comment: Optional[str] = None
+    finalized_at: Optional[datetime] = None
+    analysis_error: Optional[str] = None
     product: ProductOut
     inspector: UserOut
     images: List[InspectionImageOut] = []

@@ -1,56 +1,142 @@
 {
   "_comment": "INSPECTRA Rule Library — Legal Metrology (Packaged Commodities) Rules, 2011",
-  "_status": "STUB — Rules are defined here for future implementation. No rule engine reads this file yet.",
   "_reference": "https://legalmetrology.gov.in/",
-  "version": "0.1.0",
-  "rules": [
+  "_note": "These rules implement a subset of LM(PC) Rules 2011 for the MVP demonstration. Rules are applied deterministically by the rule engines. AI agents provide evidence; rule engines make the structural determination.",
+  "version": "1.0.0",
+  "declaration_rules": [
     {
-      "id": "LM_R6_1_A",
-      "name": "Product Name Declaration",
+      "id": "DECL-PRODUCT-001",
+      "name": "Product Identity Declaration",
       "rule_ref": "Rule 6(1)(a)",
-      "description": "Every package shall bear the name of the commodity.",
+      "description": "Every package shall carry the generic or specific name of the commodity.",
+      "field_key": "product_identity",
       "mandatory": true,
-      "implemented": false
+      "severity": "HIGH",
+      "validation_type": "presence",
+      "implemented": true
     },
     {
-      "id": "LM_R6_1_B",
+      "id": "DECL-QTY-001",
       "name": "Net Quantity Declaration",
       "rule_ref": "Rule 6(1)(b)",
-      "description": "Every package shall declare net quantity in standard units.",
+      "description": "Every package shall declare the net quantity in standard units of weights and measures.",
+      "field_key": "net_quantity",
       "mandatory": true,
-      "implemented": false
+      "severity": "CRITICAL",
+      "validation_type": "presence",
+      "implemented": true
     },
     {
-      "id": "LM_R6_1_C",
-      "name": "Manufacturer Name & Address",
+      "id": "DECL-MFR-001",
+      "name": "Manufacturer / Packer Name",
       "rule_ref": "Rule 6(1)(c)",
-      "description": "Name and complete address of the manufacturer or packer shall be declared.",
+      "description": "Name and complete address of the manufacturer or packer shall be declared on the package.",
+      "field_key": "manufacturer",
       "mandatory": true,
-      "implemented": false
+      "severity": "HIGH",
+      "validation_type": "presence",
+      "implemented": true
     },
     {
-      "id": "LM_R6_1_D",
+      "id": "DECL-ADDR-001",
+      "name": "Manufacturer / Packer Address",
+      "rule_ref": "Rule 6(1)(c)",
+      "description": "Complete address of the manufacturer or packer shall be declared.",
+      "field_key": "address",
+      "mandatory": true,
+      "severity": "HIGH",
+      "validation_type": "presence",
+      "implemented": true
+    },
+    {
+      "id": "DECL-DATE-001",
       "name": "Month and Year of Manufacture",
       "rule_ref": "Rule 6(1)(d)",
-      "description": "Month and year in which commodity is manufactured or packed shall be declared.",
+      "description": "The month and year in which the commodity is manufactured or packed shall be declared.",
+      "field_key": "manufacture_date",
       "mandatory": true,
-      "implemented": false
+      "severity": "HIGH",
+      "validation_type": "presence",
+      "implemented": true
     },
     {
-      "id": "LM_R18",
+      "id": "DECL-MRP-001",
       "name": "MRP Declaration",
       "rule_ref": "Rule 18",
-      "description": "Every package shall carry MRP inclusive of all taxes.",
+      "description": "Every package shall carry the maximum retail price inclusive of all taxes.",
+      "field_key": "mrp",
       "mandatory": true,
-      "implemented": false
+      "severity": "CRITICAL",
+      "validation_type": "presence",
+      "implemented": true
     },
     {
-      "id": "LM_R6_CONSUMER_CARE",
+      "id": "DECL-CONSUMER-001",
       "name": "Consumer Care Information",
       "rule_ref": "Rule 6(1)(j)",
-      "description": "Consumer care contact details shall be declared.",
+      "description": "Consumer care address and/or telephone number shall be declared.",
+      "field_key": "consumer_care",
       "mandatory": false,
-      "implemented": false
+      "severity": "MEDIUM",
+      "validation_type": "presence",
+      "implemented": true
+    },
+    {
+      "id": "DECL-ORIGIN-001",
+      "name": "Country of Origin",
+      "rule_ref": "Rule 6(1)(k)",
+      "description": "For imported commodities, country of origin shall be declared.",
+      "field_key": "country_of_origin",
+      "mandatory": false,
+      "severity": "LOW",
+      "validation_type": "presence",
+      "implemented": true
+    }
+  ],
+  "measurement_rules": [
+    {
+      "id": "QTY-DETECTED-001",
+      "name": "Net Quantity Detected",
+      "rule_ref": "Rule 6(1)(b)",
+      "description": "A net quantity declaration must be detectable on the package.",
+      "validation_type": "quantity_presence",
+      "mandatory": true,
+      "severity": "CRITICAL",
+      "implemented": true
+    },
+    {
+      "id": "QTY-UNIT-001",
+      "name": "Standard Unit Used",
+      "rule_ref": "Rule 6(1)(b)",
+      "description": "Net quantity shall be expressed in standard units: g, kg, ml, L.",
+      "validation_type": "unit_validity",
+      "allowed_units": ["g", "kg", "gram", "grams", "gm", "ml", "l", "litre", "litres", "liter", "liters", "millilitre", "millilitres"],
+      "mandatory": true,
+      "severity": "HIGH",
+      "implemented": true
+    },
+    {
+      "id": "QTY-VALUE-001",
+      "name": "Plausible Quantity Value",
+      "rule_ref": "Rule 6(1)(b)",
+      "description": "The declared quantity numeric value shall be plausible (> 0 and <= 50000 in normalized units).",
+      "validation_type": "value_range",
+      "min_normalized": 0.01,
+      "max_normalized": 50000,
+      "mandatory": true,
+      "severity": "HIGH",
+      "implemented": true
+    },
+    {
+      "id": "PRESENT-READABILITY-001",
+      "name": "Label Readability",
+      "rule_ref": "Rule 6",
+      "description": "Declarations shall be legible and clearly printed. Requires human verification if average OCR confidence is below 80%.",
+      "validation_type": "readability_check",
+      "confidence_threshold": 0.80,
+      "mandatory": false,
+      "severity": "MEDIUM",
+      "implemented": true
     }
   ]
 }

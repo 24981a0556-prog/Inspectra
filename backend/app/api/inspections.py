@@ -1,6 +1,7 @@
 """
 Inspections API — create, list, retrieve, and update inspection status.
 """
+from datetime import datetime, timezone
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session, joinedload
 from typing import List, Optional
@@ -105,13 +106,13 @@ def update_inspection_status(
         raise HTTPException(status_code=403, detail="Access denied.")
 
     inspection.status = payload.status
+    now = datetime.now(timezone.utc)
     if payload.status == InspectionStatus.IN_PROGRESS and not inspection.started_at:
-        from datetime import datetime, timezone
-        inspection.started_at = datetime.now(timezone.utc)
-    if payload.status == InspectionStatus.COMPLETED:
-        from datetime import datetime, timezone
-        inspection.completed_at = datetime.now(timezone.utc)
+        inspection.started_at = now
+    if payload.status in (InspectionStatus.COMPLETED, InspectionStatus.CLOSED):
+        inspection.completed_at = now
 
     db.commit()
     db.refresh(inspection)
     return inspection
+

@@ -125,7 +125,7 @@ export default function NewInspectionPage() {
     setImages((prev) => prev.map((i) => (i.id === id ? { ...i, viewType: vt } : i)));
   };
 
-  // ── Step 3 submit — uploads images then finishes ──────────
+  // ── Step 3 submit — uploads images then triggers analysis ────────────
   const handleStep3 = async () => {
     setError('');
     if (!createdInspection) return;
@@ -139,7 +139,8 @@ export default function NewInspectionPage() {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
       }
-      navigate(`/inspections/${createdInspection.id}`);
+      // Navigate to detail page; trigger analysis from there
+      navigate(`/inspections/${createdInspection.id}?tab=analysis&autostart=1`);
     } catch (err: any) {
       setError(err?.response?.data?.detail || 'Failed to upload images.');
     } finally {

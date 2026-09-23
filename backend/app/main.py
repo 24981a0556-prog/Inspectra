@@ -9,7 +9,7 @@ import os
 
 from app.core.config import settings
 from app.core.database import init_db
-from app.api import auth, users, products, inspections, images, dashboard
+from app.api import auth, users, products, inspections, images, dashboard, analysis
 
 
 @asynccontextmanager
@@ -52,6 +52,7 @@ app.include_router(users.router,       prefix=f"{API_PREFIX}/users",       tags=
 app.include_router(products.router,    prefix=f"{API_PREFIX}/products",    tags=["Products"])
 app.include_router(inspections.router, prefix=f"{API_PREFIX}/inspections", tags=["Inspections"])
 app.include_router(images.router,      prefix=f"{API_PREFIX}/inspections", tags=["Inspection Images"])
+app.include_router(analysis.router,    prefix=f"{API_PREFIX}/inspections", tags=["Analysis Pipeline"])
 app.include_router(dashboard.router,   prefix=f"{API_PREFIX}/dashboard",   tags=["Dashboard"])
 
 

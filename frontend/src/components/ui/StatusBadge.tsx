@@ -7,6 +7,7 @@ const STATUS_STYLES: Record<string, string> = {
   // Inspection statuses
   DRAFT:            'bg-slate-100 text-slate-700 border-slate-200',
   IN_PROGRESS:      'bg-blue-50  text-blue-700  border-blue-200',
+  ANALYZING:        'bg-violet-50 text-violet-700 border-violet-200',
   COMPLETED:        'bg-green-50 text-green-700 border-green-200',
   REQUIRES_REVIEW:  'bg-amber-50 text-amber-700 border-amber-200',
   CLOSED:           'bg-gray-100 text-gray-500  border-gray-200',
@@ -22,6 +23,7 @@ const STATUS_STYLES: Record<string, string> = {
 const STATUS_LABELS: Record<string, string> = {
   DRAFT:             'Draft',
   IN_PROGRESS:       'In Progress',
+  ANALYZING:         'Analyzing…',
   COMPLETED:         'Completed',
   REQUIRES_REVIEW:   'Needs Review',
   CLOSED:            'Closed',
@@ -32,6 +34,7 @@ const STATUS_LABELS: Record<string, string> = {
   NEEDS_VERIFICATION:'Needs Verification',
   NOT_APPLICABLE:    'N/A',
 };
+
 
 interface StatusBadgeProps {
   status: Status;
